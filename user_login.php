@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 include 'config.php';
 
-session_start();
 
 if(isset($_POST['login'])){
 
@@ -18,8 +17,10 @@ if(isset($_POST['login'])){
    if($select_user->rowCount() > 0){
       $_SESSION['user_id'] = $row['id'];
       header('location:index.php');
+exit;
    }else{
       header('location:index.php');
+exit;
    }
 
 }

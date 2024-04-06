@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 include 'config.php';
 
-session_start();
+
 session_unset();
 session_destroy();
 

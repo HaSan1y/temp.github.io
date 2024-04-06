@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 include 'config.php';
 
-session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
@@ -15,6 +14,7 @@ if(isset($_GET['delete'])){
    $delete_order = $conn->prepare("DELETE FROM `admin` WHERE id = ?");
    $delete_order->execute([$delete_id]);
    header('location:admin_accounts.php');
+   exit;
 }
 
 ?>

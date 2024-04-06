@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 include 'config.php';
 
-session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
@@ -34,6 +33,7 @@ if(isset($_POST['add_product'])){
       }else{
          $insert_product = $conn->prepare("INSERT INTO `products`(name, price, image) VALUES(?,?,?)");
          $insert_product->execute([$name, $price, $image]);
+         $new_product_id = $conn->lastInsertId();
          move_uploaded_file($image_tmp_name, $image_folder);
          $message[] = 'new product added!';
       }

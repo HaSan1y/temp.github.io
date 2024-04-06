@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 include 'config.php';
 
-session_start();
 
 $admin_id = $_SESSION['admin_id'];
 

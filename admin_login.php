@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 include 'config.php';
 
-session_start();
 
 if(isset($_POST['login'])){
 
@@ -18,6 +17,7 @@ if(isset($_POST['login'])){
    if($select_admin->rowCount() > 0){
       $_SESSION['admin_id'] = $row['id'];
       header('location:admin_page.php');
+      exit;
    }else{
       $message[] = 'incorrect username or password!';
    }

@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 include 'config.php';
 
-session_start();
+
 
 if(isset($_SESSION['user_id'])){
    $user_id = $_SESSION['user_id'];
@@ -174,6 +174,7 @@ if(isset($_POST['order'])){
          <div id="order-btn" class="fas fa-box"></div>
          <?php
             $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $count_cart_items->execute([$user_id]);
             $total_cart_items = $count_cart_items->rowCount();
          ?>
