@@ -26,6 +26,7 @@ if(isset($_GET['delete'])){
    $delete_order = $conn->prepare("DELETE FROM `orders` WHERE id = ?");
    $delete_order->execute([$delete_id]);
    header('location:admin_orders.php');
+   exit;
 }
 
 ?>

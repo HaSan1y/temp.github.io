@@ -7,6 +7,7 @@ $admin_id = $_SESSION['admin_id'];
 
 if(!isset($admin_id)){
    header('location:admin_login.php');
+   exit;
 };
 
 if(isset($_POST['add_product'])){
@@ -53,7 +54,7 @@ if(isset($_GET['delete'])){
    $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE pid = ?");
    $delete_cart->execute([$delete_id]);
    header('location:admin_products.php');
-
+   exit;
 }
 
 ?>

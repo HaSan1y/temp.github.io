@@ -2,8 +2,7 @@
 session_start();
 include 'config.php';
 
-
-if(isset($_POST['login'])){
+if (isset($_POST['login'])) {
 
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
@@ -14,15 +13,12 @@ if(isset($_POST['login'])){
    $select_user->execute([$email, $pass]);
    $row = $select_user->fetch(PDO::FETCH_ASSOC);
 
-   if($select_user->rowCount() > 0){
+   if ($select_user->rowCount() > 0) {
       $_SESSION['user_id'] = $row['id'];
       header('location:index.php');
-exit;
-   }else{
+      exit;
+   } else {
       header('location:index.php');
-exit;
+      exit;
    }
-
 }
-
-?>

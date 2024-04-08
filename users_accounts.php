@@ -2,11 +2,11 @@
 session_start();
 include 'config.php';
 
-
 $admin_id = $_SESSION['admin_id'];
 
 if(!isset($admin_id)){
    header('location:admin_login.php');
+   exit;
 };
 
 if(isset($_GET['delete'])){
@@ -14,6 +14,7 @@ if(isset($_GET['delete'])){
    $delete_order = $conn->prepare("DELETE FROM `user` WHERE id = ?");
    $delete_order->execute([$delete_id]);
    header('location:users_accounts.php');
+   exit;
 }
 
 ?>

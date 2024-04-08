@@ -52,12 +52,14 @@ if(isset($_GET['delete_cart_item'])){
    $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE id = ?");
    $delete_cart_item->execute([$delete_cart_id]);
    header('location:index.php');
+   exit;
 }
 
 if(isset($_GET['logout'])){
    session_unset();
    session_destroy();
    header('location:index.php');
+   exit;
 }
 
 if(isset($_POST['add_to_cart'])){
@@ -203,7 +205,7 @@ if(isset($_POST['order'])){
                   echo '<a href="index.php?logout" class="btn">logout</a>';
                }
             }else{
-               echo '<p><span>you are not logged in now!</span></p>';
+               echo '<p><span>you are not logged in!</span></p>';
             }
          ?>
       </div>
@@ -593,13 +595,12 @@ if(isset($_POST['order'])){
          <i class="fas fa-phone"></i>
          <h3>phone number</h3>
          <p>+123-456-7890</p>
-         <p>+111-222-3333</p>
       </div>
 
       <div class="box">
          <i class="fas fa-map-marker-alt"></i>
-         <h3>our address</h3>
-         <p>mumbai, india - 400104</p>
+         <h3>address</h3>
+         <p>Neuenegg, Schweiz - 3176</p>
       </div>
 
       <div class="box">
@@ -611,14 +612,14 @@ if(isset($_POST['order'])){
       <div class="box">
          <i class="fas fa-envelope"></i>
          <h3>email address</h3>
-         <p>shaikhanas@gmail.com</p>
-         <p>anasbhai@gmail.com</p>
+         <p>hadirekt@gmail.com</p>
+         <p>hasan.yildirim@outlook.com</p>
       </div>
 
    </div>
 
    <div class="credit">
-      &copy; copyright @ <?= date('Y'); ?> by <span>mr. web designer</span> | all rights reserved!
+      &copy; copyright @ <?= date('Y'); ?> by <span>h.y.</span> | all rights reserved!
    </div>
 
 </section>
